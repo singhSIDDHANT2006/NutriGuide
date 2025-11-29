@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NutriGuide</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* GLOBAL STYLES */
+body{
+    margin:0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background:#0b0f19;
+    color:white;
+    line-height:1.6;
+}
+
+/* NAVIGATION */
+nav{
+    width:100%;
+    padding:20px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#111627;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+nav .logo{
+    font-size:1.6rem;
+    font-weight:800;
+    color:#45f0c3;
+    text-decoration:none;
+}
+
+nav a{
+    color:#c9d4ff;
+    text-decoration:none;
+    margin:0 15px;
+    font-size:0.95rem;
+    transition:color 0.3s ease;
+}
+
+nav a:hover{
+    color:#45f0c3;
+}
+
+nav .btn{
+    background:#45f0c3;
+    color:#0b0f19 !important;
+    padding:10px 22px;
+    border-radius:30px;
+    font-weight:700;
+    text-decoration:none;
+    margin-left:20px;
+}
+
+nav .btn:hover{
+    background:#33caa3;
+}
+
+/* HERO SECTION */
+.hero{
+    padding:100px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.hero-left{
+    max-width:600px;
+}
+
+.hero-title{
+    font-size:3.5rem;
+    font-weight:800;
+    line-height:1.1;
+    margin-bottom:15px;
+}
+
+.hero-title span{
+    color:#45f0c3;
+}
+
+.hero-text{
+    color:#c7c9d9;
+    margin:20px 0;
+    font-size:1.1rem;
+    line-height:1.7;
+}
+
+.btn-main{
+    background:#45f0c3;
+    color:#0b0f19;
+    padding:16px 30px;
+    border-radius:30px;
+    font-weight:700;
+    text-decoration:none;
+    display:inline-block;
+    margin-top:25px;
+    transition:0.3s;
+    box-shadow:0 5px 15px rgba(69,240,195,0.4);
+}
+
+.btn-main:hover{
+    background:#33caa3;
+    transform:translateY(-2px);
+}
+
+/* SECTIONS */
+section{
+    padding:100px 50px;
+}
+
+h2{
+    font-size:2.5rem;
+    margin-bottom:20px;
+    font-weight:800;
+    text-align:center;
+}
+
+.section-text{
+    color:#c7c9d9;
+    max-width:800px;
+    line-height:1.7;
+    margin:0 auto 50px;
+    text-align:center;
+}
+
+/* FEATURES */
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+    gap:30px;
+    max-width:1200px;
+    margin:0 auto;
+}
+
+.card{
+    background:#111627;
+    padding:35px;
+    border-radius:18px;
+    border:1px solid #1f273b;
+    transition:0.4s;
+    box-shadow:0 8px 25px rgba(0,0,0,0.2);
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    border-color:#45f0c3;
+}
+
+.icon-placeholder{
+    font-size:2.5rem;
+    color:#45f0c3;
+    margin-bottom:15px;
+    display:block;
+}
+
+.card h3{
+    margin-bottom:10px;
+    color:white;
+    font-size:1.3rem;
+}
+
+.card p{
+    color:#c7c9d9;
+    font-size:1rem;
+}
+
+/* TESTIMONIALS */
+#testimonials{
+    background:#111627;
+}
+
+.testimonial-grid{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.testimonial-card{
+    background:#0b0f19;
+    padding:30px;
+    border-radius:12px;
+    max-width:350px;
+    border-left:4px solid #45f0c3;
+}
+
+.testimonial-card p{
+    font-style:italic;
+    margin-bottom:15px;
+    color:#c7c9d9;
+}
+
+.testimonial-card span{
+    font-weight:700;
+}
+
+/* CTA */
+#cta{
+    text-align:center;
+    padding:80px 50px;
+    background:linear-gradient(90deg,#111627,#1a2236);
+    border-radius:12px;
+    margin:0 auto;
+    max-width:1200px;
+}
+
+/* FOOTER */
+footer{
+    padding:30px;
+    text-align:center;
+    background:#111627;
+    color:#c7c9d9;
+    border-top:1px solid #1f273b;
+}
+
+/* AI FLOATING BUTTON */
+#ai-button {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background:#45f0c3;
+    color:#0b0f19;
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:2rem;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(69, 240, 195, 0.4);
+    transition:0.3s;
+    z-index:2000;
+}
+
+#ai-button:hover {
+    transform:scale(1.1);
+}
+
+/* AI CHATBOX */
+#ai-chatbox {
+    position: fixed;
+    bottom: 110px;
+    right: 25px;
+    width: 330px;
+    height: 420px;
+    background:#111627;
+    border:1px solid #1f273b;
+    border-radius:16px;
+    display:none;
+    flex-direction:column;
+    box-shadow:0 15px 35px rgba(0,0,0,0.4);
+    z-index:2000;
+}
+
+#ai-header {
+    padding:12px;
+    font-weight:700;
+    background:#45f0c3;
+    color:#0b0f19;
+    text-align:center;
+    border-radius:16px 16px 0 0;
+}
+
+#ai-messages {
+    flex:1;
+    padding:12px;
+    overflow-y:auto;
+    font-size:0.9rem;
+}
+
+.ai-msg-user {
+    text-align:right;
+    margin:8px 0;
+    color:#45f0c3;
+}
+
+.ai-msg-bot {
+    text-align:left;
+    margin:8px 0;
+    color:white;
+}
+
+#ai-input-area {
+    display:flex;
+    padding:10px;
+    border-top:1px solid #1f273b;
+}
+
+#ai-input {
+    flex:1;
+    padding:10px;
+    border-radius:8px;
+    border:none;
+    outline:none;
+    background:#0b0f19;
+    color:white;
+}
+
+#ai-send {
+    width:45px;
+    margin-left:10px;
+    border:none;
+    background:#45f0c3;
+    color:#0b0f19;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:1.1rem;
+}
+
+#ai-send:hover {
+    background:#33caa3;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    nav, section, .hero{
+        padding:20px;
+    }
+    nav div:last-child{
+        display:none;
+    }
+    .hero-title{
+        font-size:2.5rem;
+        text-align:center;
+    }
+    .hero{
+        justify-content:center;
+        text-align:center;
+    }
+    #cta{
+        margin:40px 20px;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<nav>
+    <a href="#home" class="logo">NutriGuide</a>
+    <div>
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#cta" class="btn">Start Your Plan</a>
+    </div>
+</nav>
+
+<section id="home" class="hero">
+    <div class="hero-left">
+        <h1 class="hero-title">
+            Your Smart Path to <span>Sustainable</span><br>
+            & Personalized Nutrition
+        </h1>
+        <p class="hero-text">
+            Stop dieting—start living. NutriGuide uses
+            <strong>AI-driven precision</strong>
+            to create customized meal plans that fit your life.
+        </p>
+        <a href="#cta" class="btn-main">Get Started Now</a>
+    </div>
+</section>
+
+<section id="about">
+    <h2>Our Mission</h2>
+    <p class="section-text">
+        NutriGuide simplifies nutrition and eliminates confusion by providing
+        clean, evidence-based diet recommendations tailored to your body and goals.
+    </p>
+</section>
+
+<section id="features">
+    <h2>Designed for Your Success</h2>
+
+    <div class="features">
+
+        <div class="card">
+            <span class="icon-placeholder">🤖</span>
+            <h3>AI Personalized Plans</h3>
+            <p>Create weekly diet charts tailored to your BMI, activity, allergies & goals.</p>
+        </div>
+
+        <div class="card">
+            <span class="icon-placeholder">🛒</span>
+            <h3>Auto Grocery List</h3>
+            <p>Meal plans automatically convert into organized shopping lists.</p>
+        </div>
+
+        <div class="card">
+            <span class="icon-placeholder">📊</span>
+            <h3>Nutrition Dashboard</h3>
+            <p>Track macros, micros, calories and hydration in real time.</p>
+        </div>
+
+        <div class="card">
+            <span class="icon-placeholder">🍽️</span>
+            <h3>Quick Recipes</h3>
+            <p>Get 15-minute healthy recipes based on available ingredients.</p>
+        </div>
+
+        <div class="card">
+            <span class="icon-placeholder">🤝</span>
+            <h3>Community Support</h3>
+            <p>Join a community of fitness lovers + expert dietitian support.</p>
+        </div>
+
+    </div>
+</section>
+
+<section id="testimonials">
+    <h2>What People Say</h2>
+    <p class="section-text">
+        Real stories from people who simplified their health journey.
+    </p>
+
+    <div class="testimonial-grid">
+
+        <div class="testimonial-card">
+            <p>"As a student, NutriGuide made eating healthy super easy and quick."</p>
+            <span>— Aarav</span>
+        </div>
+
+        <div class="testimonial-card">
+            <p>"This app saved me hours every week. Best diet tool ever!"</p>
+            <span>— Sarah</span>
+        </div>
+
+    </div>
+</section>
+
+<section id="cta">
+    <h2>Ready to Transform Your Life?</h2>
+    <p class="section-text">
+        Your personalized diet plan is just 5 minutes away.
+    </p>
+    <a href="#" class="btn-main">Start Your Free Trial</a>
+</section>
+
+<footer>
+    © 2025 NutriGuide – Smart Personalized Diet Planning
+</footer>
+
+<!-- AI Button -->
+<div id="ai-button">💬</div>
+
+<!-- AI Chatbox -->
+<div id="ai-chatbox">
+    <div id="ai-header">NutriGuide AI Assistant</div>
+    <div id="ai-messages"></div>
+    <div id="ai-input-area">
+        <input id="ai-input" type="text" placeholder="Ask about your diet...">
+        <button id="ai-send">➤</button>
+    </div>
+</div>
+
+<script>
+// Toggle Chatbox
+document.getElementById("ai-button").addEventListener("click", () => {
+    const box = document.getElementById("ai-chatbox");
+    box.style.display = box.style.display === "flex" ? "none" : "flex";
+});
+
+// Send message to backend
+document.getElementById("ai-send").addEventListener("click", sendMessage);
+document.getElementById("ai-input").addEventListener("keypress", function(e){
+    if(e.key === "Enter") sendMessage();
+});
+
+async function sendMessage() {
+    const input = document.getElementById("ai-input");
+    const msg = input.value.trim();
+    if(!msg) return;
+
+    const messages = document.getElementById("ai-messages");
+    messages.innerHTML += `<div class='ai-msg-user'>${msg}</div>`;
+    input.value = "";
+    messages.scrollTop = messages.scrollHeight;
+
+    try {
+        const response = await fetch("http://localhost:3000/diet", {
+            method: "POST",
+            headers:{ "Content-Type":"application/json" },
+            body: JSON.stringify({ message: msg })
+        });
+
+        const data = await response.json();
+        messages.innerHTML += `<div class='ai-msg-bot'>${data.reply}</div>`;
+    } 
+    catch (e) {
+        messages.innerHTML += `<div class='ai-msg-bot'>Error: Cannot connect to AI backend.</div>`;
+    }
+
+    messages.scrollTop = messages.scrollHeight;
+}
+</script>
+
+</body>
+</html>
